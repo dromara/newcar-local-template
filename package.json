@@ -6,8 +6,8 @@
     "export": "ncli export main.mjs"
   },
   "dependencies": {
-    "newcar": "^0.14.0",
-    "canvaskit-wasm": "^0.39.1"
+    "canvaskit-wasm": "^0.39.1",
+    "newcar": "^0.14.2"
   },
   "keywords": [],
   "author": "",

@@ -1,61 +1,26 @@
-import { CarEngine, Scene, ImageWidget, Text, useImage, Widget, Color, useFont } from 'newcar'
-import path from 'node:path'
-import { pathToFileURL } from 'node:url'
+import { CarEngine, Scene, ImageWidget, Text, useImage, Widget, move, useFont } from 'newcar'
 
-// const logoLoaded = useImage('C:\\Users\\acbox\\Desktop\\projects\\newcar-local-template\\assets\\newcar.webp')
-await useFont(pathToFileURL(path.resolve('./fonts/bahnschrift.ttf')))
+const logoLoaded = await useImage('./assets/newcar.webp')
+await useFont('./fonts/bahnschrift.ttf')
 
-const engine = await new CarEngine.init('./node_modules/canvaskit-wasm/bin/canvaskit.wasm')
-const app = engine.createLocalApp(1600, 900)
-// const logo = new ImageWidget(logoLoaded, {
-//   x: 668,
-//   y: 386
-// })
-const text = new Text([{
-  text: "Hello! ",
+const engine = await new CarEngine().init('./node_modules/canvaskit-wasm/bin/canvaskit.wasm')
+const app = engine.createLocalApp(700, 700)
+const logo = new ImageWidget(logoLoaded, {
   style: {
-    fontSize: 50,
-    fontFamilies: ['bahnschrift']
+    scaleX: 0.4,
+    scaleY: 0.4
   }
-}, {
-  text: "N",
-  style: {
-    fontSize: 40,
-    color: Color.parse('red')
-  }
-}, {
-  text: "e",
-  style: {
-    fontSize: 60,
-    color: Color.parse('orange')
-  }
-},{
-  text: "w",
-  style: {
-    fontSize: 30,
-    color: Color.parse('yellow')
-  }
-},{
-  text: "c",
-  style: {
-    fontSize: 50,
-    color: Color.parse('green')
-  }
-},{
-  text: "a",
-  style: {
-    fontSize: 30,
-    color: Color.parse('blue')
-  }
-},{
-  text: "r",
-  style: {
-    fontSize: 40,
-    color: Color.parse('purple')
-  }
-}], {
 })
-const root = new Widget().add(logo, text)
+const text = new Text(['Hello Newcar!'], {
+  y: 600,
+  style: {
+    textAlign: 'center'
+  }
+}).animate(move, 0, 300, {
+  from: [0, 600],
+  to: [-1400, 600]
+})
+const root = new Widget().add(text, logo)
 const scene = new Scene(root)
 app.checkout(scene)
 
