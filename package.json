@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "export": "ncli export main.mjs"
+    "export": "ncli export main.mjs",
+    "preview": "node ./preview/local2brower.js && vite"
   },
   "dependencies": {
     "canvaskit-wasm": "^0.39.1",
@@ -11,5 +12,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@newcar/cli": "^2.0.0",
+    "vite": "^5.2.11"
+  }
 }
